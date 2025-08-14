@@ -16,7 +16,7 @@ const TransactionList = ({ transactions, deleteTransaction }: Props) => {
     <div className="mx-auto mt-16 flex w-1/2 items-start justify-center gap-16">
       {/* income */}
       <div className="flex-1">
-        <h3 className="text-xl uppercase text-[#30bcb4]">Income</h3>
+        <h3 className="text-income text-xl font-medium uppercase">Income</h3>
         <ul>
           {incomeList.map((item) => (
             <li
@@ -26,22 +26,20 @@ const TransactionList = ({ transactions, deleteTransaction }: Props) => {
               <span>{item.description}</span>
 
               <div className="flex items-center space-x-3">
-                <span className="text-[#30bcb4] transition-transform duration-300 ease-in-out group-hover:-translate-x-2">
+                <span className="text-income transition-transform duration-300 ease-in-out group-hover:-translate-x-2">
                   + {item.value.toFixed(2)}
                 </span>
                 <button
                   onClick={() => {
                     if (
-                      window.confirm(
-                        "Are you sure to delete this transaction?",
-                      )
+                      window.confirm("Are you sure to delete this transaction?")
                     ) {
                       deleteTransaction(item.id);
                     }
                   }}
                   className="translate-x-2 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:opacity-100"
                 >
-                  <Trash2 className="h-4 w-4 text-gray-500 hover:text-red-500" />
+                  <Trash2 className="hover:text-expense h-4 w-4 text-gray-500" />
                 </button>
               </div>
             </li>
@@ -51,7 +49,7 @@ const TransactionList = ({ transactions, deleteTransaction }: Props) => {
 
       {/* expenses */}
       <div className="flex-1">
-        <h3 className="text-xl uppercase text-red-500">Expenses</h3>
+        <h3 className="text-expense text-xl font-medium uppercase">Expenses</h3>
         <ul>
           {expenseList.map((item) => {
             const percent = totalIncome
@@ -65,10 +63,10 @@ const TransactionList = ({ transactions, deleteTransaction }: Props) => {
                 <span>{item.description}</span>
 
                 <div className="flex items-center space-x-3">
-                  <span className="text-red-500 transition-transform duration-300 ease-in-out group-hover:-translate-x-2">
+                  <span className="text-expense transition-transform duration-300 ease-in-out group-hover:-translate-x-2">
                     - {item.value.toFixed(2)}
                   </span>
-                  <span className="rounded bg-red-200 px-3 py-1 text-sm text-red-500 transition-transform duration-300 ease-in-out group-hover:-translate-x-2">
+                  <span className="text-expense rounded bg-red-200 px-3 py-1 text-sm transition-transform duration-300 ease-in-out group-hover:-translate-x-2">
                     {percent}%
                   </span>
                   <button
@@ -83,7 +81,7 @@ const TransactionList = ({ transactions, deleteTransaction }: Props) => {
                     }}
                     className="translate-x-2 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:opacity-100"
                   >
-                    <Trash2 className="h-4 w-4 text-gray-500 hover:text-red-500" />
+                    <Trash2 className="hover:text-expense h-4 w-4 text-gray-500" />
                   </button>
                 </div>
               </li>

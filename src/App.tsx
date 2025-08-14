@@ -4,6 +4,7 @@ import type { Transaction } from "./types";
 import BudgetHeader from "./components/BudgetHeader";
 import TransactionForm from "./components/TransactionForm";
 import TransactionList from "./components/TransactionList";
+import ExportButton from "./components/ExportButton";
 
 function App() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -50,6 +51,7 @@ function App() {
         transactions={transactions}
         deleteTransaction={deleteTransaction}
       />
+      <ExportButton data={transactions} />
     </>
   );
 }
